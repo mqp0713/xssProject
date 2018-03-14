@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟ajax获取数据</title>
+</head>
+<body>
+评论列表页
+<div id="list"></div>
+<script>
+var xhr = new XMLHttpRequest()
+xhr.open("GET","comment.json")
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) { // readyState == 4说明请求已完成
+    var dada = JSON.parse(xhr.responseText)  //从服务器获得数据
+    var commenlist = dada.commonList;
+    var html = ''
+    for(var i = 0; i<commenlist.length; i++){
+      html += '<p>'+commenlist[i].content+'</p>'
+    }
+    document.getElementById("list").innerHTML = html
+  }
+};
+xhr.send();
+</script>
+</body>
+</html>

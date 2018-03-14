@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>测试是否存在xss漏洞</title>
+</head>
+<body>
+<span>输入评论：</span>
+<input type="text" value="" placeholder="请输入您的评论" id="comment">
+<input type="button" value="提交" id="submit">
+<a href="xssAjax.html">跳转评论列表页</a>
+<p>
+  <span>您的评论：</span>
+  <span id="commentList"></span>
+</p>
+<script>
+  document.getElementById("submit").addEventListener("click",function(){
+      let comment = document.getElementById("comment").value
+      console.log(comment)
+      document.getElementById("commentList").innerHTML = comment
+  })
+  // var str = "<img src='error.png' onerror='alert(&quot;XSS&quot;)' >"
+  // var str1 = "<img src='error.png' onerror='while(true) alert(&quot;你关不掉我&quot;)' >"
+</script>
+</body>
+</html>

